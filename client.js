@@ -22,7 +22,8 @@ tcpClientPort.on ("close", function (err) {
 	}, 1000);
 });
 
-tcpClientPort.on ("open", function () {				
+tcpClientPort.on ("open", function () {				// socket is connecting
+	console.log ('trying to connect...');			
 });
 
 tcpClientPort.on ("ready", function () {			// we are connected to the server
@@ -63,9 +64,9 @@ function startSending () {
 }
 
 /**
- * Clear the intervals
+ * Clear the intervals if they are running
  **/
 function stopSending() {
-	clearInterval (reverseInterval);
-	clearInterval (upperCaseInterval);
+	if (typeof reverseInterval!=='undefined') clearInterval (reverseInterval);
+	if (typeof upperCaseInterval!=='undefined') clearInterval (upperCaseInterval);
 }
